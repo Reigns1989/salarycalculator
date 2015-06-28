@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Salary Calculator</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for the docs site -->
+    <link href="css/main.css" rel="stylesheet">
+  </head>
+
+<body>
+
+    <!-- Static navbar -->
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">CloudStrap</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse navbar-right">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Guidlines <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">HTML</a></li>
+                <li><a href="#">CSS</a></li>
+              </ul>
+            </li>
+            <li><a href="#about">Components</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+
+<div class="container">
+  <h2>Dynamic Tabs</h2>
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">You</a></li>
+    <li><a class="disabled" href="#menu1">Mortgage Details</a></li>
+    <li><a class="disabled" href="#menu2">Expenses</a></li>
+    <li><a data-toggle="tab" href="#menu3">Final Salary</a></li>
+  </ul>
+<form role="form">
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <h3>You</h3>
+      <!-- Form -->
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" readonly>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="salary">Salary (per annum)</label>
+          <input type="text" class="form-control" id="salary">
+        </div>
+      </div>
+      <div class="form-group hidden">
+        <input id="box2" type="text" oninput="calculate()" />
+      </div>
+      <!-- Form End -->
+    </div>
+    <div id="menu1" class="tab-pane address fade">
+      <h3>Address
+          <input type="checkbox"> Property is leasehold
+      </h3>
+
+      <!-- Form -->
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="address1">First Line Address</label>
+          <input type="text" class="form-control" id="address1">
+        </div>
+        <div class="form-group">
+          <label for="address3">Post Code</label>
+          <input type="text" class="form-control" id="address3">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="address2">Second line Address</label>
+          <input type="text" class="form-control" id="address2">
+        </div>
+        <div class="form-group">
+          <label for="address4">Country</label>
+          <input type="text" class="form-control" id="address4">
+        </div>
+      </div>
+      <!-- Form End -->
+      <h3>Mortgage</h3>
+      <!-- Form -->
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="value1">Home Value</label>
+          <input type="text" class="form-control" id="value">
+        </div>
+        <div class="form-group">
+          <label for="repayment1">Years for Repayment</label>
+          <input type="text" class="form-control" id="repayment1">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="value2">Mortgage Value</label>
+          <input type="text" class="form-control" id="value2">
+        </div>
+        <div class="form-group">
+          <label for="repayment2">Year repayment started</label>
+          <input type="text" class="form-control" id="repayment2">
+        </div>
+      </div>
+      <!-- Form End -->
+      <div class="leasehold">
+        <h3>Leasehold</h3>
+        <!-- Form -->
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="rent">Ground rent (per year)</label>
+            <input type="text" class="form-control" id="rent">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="service">Service charge (per year)</label>
+            <input type="text" class="form-control" id="service">
+          </div>
+        </div>
+      </div>
+      <!-- Form End -->
+    </div>
+    <div id="menu2" class="tab-pane fade">
+      <h3>Expenses</h3>
+      <!-- Form -->
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="food">Food shopping (per week)</label>
+          <input type="text" class="form-control" id="food">
+        </div>
+        <div class="form-group">
+          <label for="car">Car insurance (per year)</label>
+          <input type="text" class="form-control" id="car">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="monthly">Other monthly outgoings (Gym, Spotify etc.)</label>
+          <input type="text" class="form-control" id="monthly">
+        </div>
+      </div>
+      <!-- Form End -->
+    </div>
+    <div id="menu3" class="tab-pane fade">
+      <h3>
+        Final Salary
+      </h3>
+        <div class="form-group">
+          <a class="btn btn-primary" onclick="calculate()">
+            Submit
+          </a>
+        </div>
+        <div class="form-group">
+          <label for="result">Monthly Salary</label>
+          <input type="text" class="form-control" id="result" readonly>
+        </div>
+          <div class="form-group">
+          <label for="result">With this salary you pay tax of:</label>
+          <input type="text" class="form-control" id="resulttax" readonly>
+        </div>
+          <div class="form-group">
+          <label for="result">and National insurance of:</label>
+          <input type="text" class="form-control" id="resultni" readonly>
+        </div>
+          <div class="form-group">
+          <label for="result">Total deducations of:</label>
+          <input type="text" class="form-control" id="deductions" readonly>
+        </div>
+        <!-- Future release
+          <div class="form-group">
+          <label for="result">Food Shopping (per month):</label>
+          <input type="text" class="form-control" id="foodshoppingtotal" readonly>
+        </div>
+        <div class="form-group">
+          <label for="result">Car Insurance (divided per month):</label>
+          <input type="text" class="form-control" id="dividedcarinsurance" readonly>
+        </div>
+        <div class="form-group">
+          <label for="result">Other Outgoings:</label>
+          <input type="text" class="form-control" id="othermonthlyoutgoings" readonly>
+        </div>
+      -->
+          <div class="form-group">
+          <label for="result">With an end salary of:</label>
+          <input type="text" class="form-control" id="afterdeductions" readonly>
+        </div>
+    </div>
+  </div>
+      </form>
+</div>
+
+
+   
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- ReqJS -->
+  <script>
+  $('.address input:checkbox').change(function(){
+        $('div.leasehold').toggleClass("show");
+});
+</script>
+
+<script>
+  function calculate() {
+    var mySalary = document.getElementById('salary').value; 
+    var myBox2 = document.getElementById('box2').value;
+    var result = document.getElementById('result'); 
+    var myResult = mySalary / 12;
+    var myTax = myResult / 11.325;
+    var myNI = myResult / 14.467;
+    var mySalaryDeductions = myTax + myNI;
+    var SalaryAfterDeductions = myResult - mySalaryDeductions;
+
+    /* expenses */
+
+    var foodShopping = document.getElementById('food').value;
+    var foodMonthly = foodShopping * 4;
+
+    var CarInsurance = document.getElementById('car').value;
+    var CarInsuranceMonthly = CarInsurance / 12;
+
+    var OtherOutgoings = document.getElementById('monthly').value;
+
+    var FoodandCar = foodMonthly + CarInsuranceMonthly;
+    var TotalMonthlyOutgoings = OtherOutgoings + FoodandCar;
+
+    var SalaryAfterAll = SalaryAfterDeductions - TotalMonthlyOutgoings;
+
+
+    /*input results */
+    result.value = myResult;
+    resulttax.value = myTax;
+    resultni.value = myNI;
+    deductions.value = mySalaryDeductions;
+    afterdeductions.value = SalaryAfterDeductions;
+    foodshoppingtotal.value = foodMonthly;
+    dividedcarinsurance.value = CarInsuranceMonthly;
+    othermonthlyoutgoings.value = OtherOutgoings;
+      
+    
+  }
+</script>
+</body>
