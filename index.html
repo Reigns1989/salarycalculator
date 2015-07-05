@@ -14,6 +14,12 @@
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- MATERIAL UI -->
+    <link href="css/material.css" rel="stylesheet">
+    <link href="css/ripples.css" rel="stylesheet">
+    <link href="css/roboto.css" rel="stylesheet">
+
+
     <!-- Custom styles for the docs site -->
     <link href="css/main.css" rel="stylesheet">
   </head>
@@ -40,7 +46,8 @@
 
 
 <div class="container">
-  <h2>Dynamic Tabs</h2>
+  <h2>Salary Calculator</h2>
+  <p>The salary calcluator is a project aimed at calculating your salary income based on monthly outgoings such as mortgage, rent, gym, food, bills and all other outgoings you might have on a monthly basis.  This project uses totally custom JS and Bootstrap 3.3.5 with the <a href="https://fezvrasta.github.io/bootstrap-material-design">Fezvrasta Bootstrap Material UI</a> applied with some minor changes.</p>
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#home">You</a></li>
     <li><a class="disabled" href="#menu1">Mortgage Details</a></li>
@@ -61,7 +68,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <label for="salary">Salary (per annum)</label>
-          <input type="text" class="form-control" id="salary">
+          <input type="text" class="form-control" id="salary" data-hint="Salary (per annum)">
         </div>
       </div>
       <div class="form-group hidden">
@@ -215,6 +222,9 @@
     <script src="js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/ie10-viewport-bug-workaround.js"></script>
+    <script src="js/ripples.min.js"></script>
+    <script src="js/material.min.js"></script>
+    <script src="js/salarycalc.js"></script>
 
     <!-- ReqJS -->
   <script>
@@ -223,62 +233,4 @@
 });
 </script>
 
-<script>
-  function calculate() {
-
-    /* tax codes */
-
-    var Tax1060L = 10600;
-
-    /* national insurance */
-    var NIAllowance = 8060;
-
-    /* values */
-    var mySalary = document.getElementById('salary').value; 
-    var myBox2 = document.getElementById('box2').value;
-    var result = document.getElementById('result'); 
-    var myResult = mySalary / 12;
-    
-    /* taxable income */
-    var taxableIncome = mySalary - Tax1060L;
-    var yearlyTax = taxableIncome / 100 * 20;
-    var monthlyTax = yearlyTax / 12;
-
-    /* national insurance */
-    var NIincome = mySalary - NIAllowance;
-    var yearlyNI = NIincome / 100 * 12;
-    var monthlyNI = yearlyNI / 12;
-
-    var mySalaryDeductions = monthlyTax + monthlyNI;
-    var SalaryAfterDeductions = myResult - mySalaryDeductions;
-
-    /* expenses */
-
-    var foodShopping = document.getElementById('food').value;
-    var foodMonthly = foodShopping * 4;
-
-    var CarInsurance = document.getElementById('car').value;
-    var CarInsuranceMonthly = CarInsurance / 12;
-
-    var OtherOutgoings = document.getElementById('monthly').value;
-
-    var FoodandCar = foodMonthly + CarInsuranceMonthly;
-    var TotalMonthlyOutgoings = OtherOutgoings + FoodandCar;
-
-    var SalaryAfterAll = SalaryAfterDeductions - TotalMonthlyOutgoings;
-
-
-    /*input results */
-    result.value = myResult;
-    resulttax.value = monthlyTax;
-    resultni.value = monthlyNI;
-    deductions.value = mySalaryDeductions;
-    afterdeductions.value = SalaryAfterDeductions;
-    foodshoppingtotal.value = foodMonthly;
-    dividedcarinsurance.value = CarInsuranceMonthly;
-    othermonthlyoutgoings.value = OtherOutgoings;
-      
-    
-  }
-</script>
 </body>
